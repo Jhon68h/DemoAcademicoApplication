@@ -1,9 +1,9 @@
 package co.edu.demoacademico.service;
 
-import co.edu.demoacademico.exception.EmailRegistradoException;
-import co.edu.demoacademico.exception.EstudianteNoEncontradoException;
 import co.edu.demoacademico.model.Estudiante;
 import co.edu.demoacademico.repository.EstudianteRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,26 +18,22 @@ public class EstudianteService {
     }
 
     public Estudiante crear(Estudiante estudiante) {
-
         // Regla: email único
-        repository.findByEmail(estudiante.getEmail())
-                .ifPresent(e -> {
-                    throw new EmailRegistradoException(estudiante.getEmail());
-                });
-
-        // Persistencia vía Repository
+        if (repository.existsByEmail(estudiante.getEmail())) {
+            throw new EmailDuplicadoException(estudiante.getEmail());
+        }
         return repository.save(estudiante);
     }
 
     public List<Estudiante> listar() {
-
-        // Consulta vía Repository
         return repository.findAll();
     }
 
-    public Estudiante buscarPorEmail(String email) {
+    public Page<Estudiante> listar(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
 
-        // Consulta vía Repository
+    public Estudiante buscarPorEmail(String email) {
         return repository.findByEmail(email)
                 .orElseThrow(() -> new EstudianteNoEncontradoException(email));
     }
