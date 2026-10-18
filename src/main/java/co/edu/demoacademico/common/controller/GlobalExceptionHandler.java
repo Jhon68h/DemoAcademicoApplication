@@ -1,7 +1,7 @@
-package co.edu.demoacademico.controller;
+package co.edu.demoacademico.common.controller;
 
-import co.edu.demoacademico.service.EmailDuplicadoException;
-import co.edu.demoacademico.service.EstudianteNoEncontradoException;
+import co.edu.demoacademico.common.exception.BusinessException;
+import co.edu.demoacademico.common.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -16,13 +16,13 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EmailDuplicadoException.class)
-    public ResponseEntity<Map<String, Object>> handleEmailDuplicado(EmailDuplicadoException ex) {
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<Map<String, Object>> handleBusiness(BusinessException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorBody(HttpStatus.CONFLICT, ex.getMessage()));
     }
 
-    @ExceptionHandler(EstudianteNoEncontradoException.class)
-    public ResponseEntity<Map<String, Object>> handleNoEncontrado(EstudianteNoEncontradoException ex) {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleNoEncontrado(NotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorBody(HttpStatus.NOT_FOUND, ex.getMessage()));
     }
 

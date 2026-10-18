@@ -1,7 +1,7 @@
-package co.edu.demoacademico.controller;
+package co.edu.demoacademico.estudiantes.controller;
 
-import co.edu.demoacademico.model.Estudiante;
-import co.edu.demoacademico.service.EstudianteService;
+import co.edu.demoacademico.estudiantes.model.Estudiante;
+import co.edu.demoacademico.estudiantes.service.EstudianteService;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;

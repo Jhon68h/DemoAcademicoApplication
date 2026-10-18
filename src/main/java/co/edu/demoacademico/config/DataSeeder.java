@@ -1,7 +1,7 @@
 package co.edu.demoacademico.config;
 
-import co.edu.demoacademico.model.Estudiante;
-import co.edu.demoacademico.repository.EstudianteRepository;
+import co.edu.demoacademico.estudiantes.model.Estudiante;
+import co.edu.demoacademico.estudiantes.repository.EstudianteRepository;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +16,7 @@ public class DataSeeder {
     @Value("${app.seed.enabled:true}")
     private boolean enabled;
 
-    @Value("${app.seed.cantidad:100}")
+    @Value("${app.seed.cantidad-estudiantes:50}")
     private int cantidad;
 
     @Bean

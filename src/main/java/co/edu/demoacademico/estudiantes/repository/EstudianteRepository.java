@@ -1,6 +1,6 @@
-package co.edu.demoacademico.repository;
+package co.edu.demoacademico.estudiantes.repository;
 
-import co.edu.demoacademico.model.Estudiante;
+import co.edu.demoacademico.estudiantes.model.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
