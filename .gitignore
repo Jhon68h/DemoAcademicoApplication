@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Informes (solo locales) ###
+*.pdf
+*.html
+diagrama.jpg
+images/
